@@ -146,12 +146,13 @@ var ConfirmationDialog = function ConfirmationDialog(_ref) {
       confirmationButtonProps = options.confirmationButtonProps,
       cancellationButtonProps = options.cancellationButtonProps,
       titleProps = options.titleProps,
-      contentProps = options.contentProps;
+      contentProps = options.contentProps,
+      allowClose = options.allowClose;
   return /*#__PURE__*/React.createElement(Dialog, _extends({
     fullWidth: true
   }, dialogProps, {
     open: open,
-    onClose: onClose
+    onClose: allowClose ? onClose : null
   }), title && /*#__PURE__*/React.createElement(DialogTitle, titleProps, title), content ? /*#__PURE__*/React.createElement(DialogContent, contentProps, content) : description && /*#__PURE__*/React.createElement(DialogContent, contentProps, /*#__PURE__*/React.createElement(DialogContentText, null, description)), /*#__PURE__*/React.createElement(DialogActions, null, /*#__PURE__*/React.createElement(Button, _extends({}, cancellationButtonProps, {
     onClick: onCancel
   }), cancellationText), /*#__PURE__*/React.createElement(Button, _extends({
@@ -171,7 +172,8 @@ var DEFAULT_OPTIONS = {
   confirmationButtonProps: {},
   cancellationButtonProps: {},
   titleProps: {},
-  contentProps: {}
+  contentProps: {},
+  allowClose: true
 };
 
 var buildOptions = function buildOptions(defaultOptions, options) {
